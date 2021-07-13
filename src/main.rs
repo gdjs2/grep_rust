@@ -3,8 +3,7 @@ use std::{env, process};
 use minigrep::{Config, run, show_help};
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let conf = Config::new(args).unwrap_or_else(|err| {
+    let conf = Config::new(env::args()).unwrap_or_else(|err| {
         #[cfg(debug_assertions)]
         panic!();
         #[cfg(not(debug_assertions))] {
